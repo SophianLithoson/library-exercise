@@ -1,0 +1,23 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: brown;
+    color:antiquewhite;
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    border-spacing: 10px;
+}
+
+.hero-text {
+    margin: 15px auto;
+}
+
+.lib-table {
+    margin: 15px auto;
+}
