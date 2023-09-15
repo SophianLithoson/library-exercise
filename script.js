@@ -1,7 +1,17 @@
 const tableBody = document.querySelector("tbody");
 const currentLibrary = [];
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 255, true);
-const soiaf = new Book("Game of Thrones", "G.R.R. Martin", 835, false);
+const buttonAddBook = document.getElementById("add-book");
+const addBookDialog = document.getElementById("add-book-dialog");
+
+// event listeners
+
+buttonAddBook.addEventListener("click", () => {
+    addBookDialog.showModal();
+});
+
+
+
+// functions
 
 function Book(title, author, numPages, isRead) {
     this.title = title;
@@ -44,6 +54,11 @@ function displayBooks() {
         tableBody.append(tr);
     });
 }
+
+// main
+
+const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 255, true);
+const soiaf = new Book("Game of Thrones", "G.R.R. Martin", 835, false);
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(soiaf);

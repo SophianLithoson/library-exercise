@@ -28,31 +28,39 @@
     </div>
     <dialog id="add-book-dialog">
         <form>
-            <label>
-                Title:
-                <input type="text" name="title"/>
-            </label>
-            <label>
-                Author:
-                <input type="text" name="author"/>
-            </label>
-            <label>
-                Pages:
-                <input type="number" name="numPages"/>
-            </label>
-            <label>
-                Have you read this?
-                <select>
-                    <option value="default">No</option>
-                    <option>yes</option>
-                </select>
-            </label>
+            <p>
+                <label>
+                    Title:
+                    <input type="text" name="title"/>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Author:
+                    <input type="text" name="author"/>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Pages:
+                    <input type="number" name="num-pages"/>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Have you read this?
+                    <select>
+                        <option value="default">No</option>
+                        <option>yes</option>
+                    </select>
+                </label>
+            </p>
             <div>
                 <button value="cancel" formmethod="dialog">Cancel</button>
-                <button id="confirmBtn" value="default">Confirm</button>
+                <button id="confirm-btn" value="default">Confirm</button>
             </div>
         </form>
     </dialog>
-    <button id="addBook">Add Book</button>
+    <button id="add-book">Add Book</button>
 </body>
 </html>
