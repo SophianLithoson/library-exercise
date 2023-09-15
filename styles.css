@@ -12,8 +12,11 @@ body {
 
 table {
     border-spacing: 10px;
-    border-radius: 5px;
-    background-color: rgb(190, 71, 71);
+}
+
+#addBook {
+    padding: 5px 25px;
+    margin: 10px auto;
 }
 
 .hero-text {
@@ -22,6 +25,8 @@ table {
 
 .lib-table {
     margin: 15px auto;
+    border-radius: 5px;
+    background-color: rgb(190, 71, 71);
 }
 
 .aligned-right {
