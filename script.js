@@ -16,7 +16,7 @@ function addBookToLibrary(tome) {
 }
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 255, true);
-const soiaf = new Book("Song of Ice and Fire", "G.R.R. Martin", 835, false);
+const soiaf = new Book("Game of Thrones", "G.R.R. Martin", 835, false);
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(soiaf);
