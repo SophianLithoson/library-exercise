@@ -2,13 +2,27 @@ const tableBody = document.querySelector("tbody");
 const currentLibrary = [];
 const buttonAddBook = document.getElementById("add-book");
 const addBookDialog = document.getElementById("add-book-dialog");
+const dialogConfirmBtn = document.getElementById("confirm-btn");
+const dialogTitle = document.getElementById("title");
+const dialogAuthor = document.getElementById("author");
+const dialogPages = document.getElementById("num-pages");
+const dialogIsRead = document.getElementById("been-read");
 
 // event listeners
 
 buttonAddBook.addEventListener("click", () => {
+    dialogTitle.value = "";
+    dialogAuthor.value = "";
+    dialogPages.value = "";
+    dialogIsRead.value = "false";
     addBookDialog.showModal();
 });
 
+dialogConfirmBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    addBookDialog.close(); 
+})
 
 
 // functions
