@@ -10,7 +10,7 @@ const dialogIsRead = document.getElementById("been-read");
 
 // event listeners
 
-buttonAddBook.addEventListener("click", () => {
+buttonAddBook.addEventListener("click", () => {     // clear form and display dialog
     dialogTitle.value = "";
     dialogAuthor.value = "";
     dialogPages.value = "";
@@ -20,7 +20,10 @@ buttonAddBook.addEventListener("click", () => {
 
 dialogConfirmBtn.addEventListener("click", (event) => {
     event.preventDefault();
-
+    
+    const newBook = new Book(dialogTitle.value, dialogAuthor.value, dialogPages.value, dialogIsRead.value);
+    addBookToLibrary(newBook);
+    displayBooks();
     addBookDialog.close(); 
 })
 
@@ -42,7 +45,11 @@ function addBookToLibrary(tome) {
     currentLibrary.push(tome);
 }
 
-function displayBooks() {
+function displayBooks() {                    // clear table then add all existing books to it
+    while (tableBody.firstChild) {
+        tableBody.removeChild(tableBody.firstChild);
+    }
+    
     currentLibrary.forEach((tome) => {
         const tr = document.createElement("tr");
         let td = document.createElement("td")
