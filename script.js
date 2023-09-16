@@ -14,7 +14,7 @@ buttonAddBook.addEventListener("click", () => {     // clear form and display di
     dialogTitle.value = "";
     dialogAuthor.value = "";
     dialogPages.value = "";
-    dialogIsRead.value = "false";
+    dialogIsRead.value = "No";
     addBookDialog.showModal();
 });
 
@@ -37,11 +37,11 @@ function Book(title, author, numPages, isRead) {
     this.isRead = isRead;
 
     this.info = function () {
-        return `${title} by ${author}, ${numPages} pages, ${(isRead) ? "has been read" : "not read yet"}`;
+        return `${title} by ${author}, ${numPages} pages, ${(isRead === "Yes") ? "has been read" : "not read yet"}`;
     }
 
     this.flipIsRead = function () {
-        this.isRead = (this.isRead) ? false : true;
+        this.isRead = (this.isRead === "Yes") ? "No" : "Yes";
     }
 }
 
@@ -114,8 +114,8 @@ function displayBooks() {                    // clear table then add all existin
 
 // main
 
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 255, true);
-const soiaf = new Book("Game of Thrones", "G.R.R. Martin", 835, false);
+const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 255, "Yes");
+const soiaf = new Book("Game of Thrones", "G.R.R. Martin", 835, "No");
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(soiaf);
