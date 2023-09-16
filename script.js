@@ -46,7 +46,8 @@ function addBookToLibrary(tome) {
 }
 
 function removeBookFromLibrary() {
-    console.log(`${this.value}`);
+    currentLibrary.splice(this.value, 1);
+    displayBooks();
 }
 
 function displayBooks() {                    // clear table then add all existing books to it
