@@ -39,6 +39,10 @@ function Book(title, author, numPages, isRead) {
     this.info = function () {
         return `${title} by ${author}, ${numPages} pages, ${(isRead) ? "has been read" : "not read yet"}`;
     }
+
+    this.flipIsRead = function () {
+        this.isRead = (this.isRead) ? false : true;
+    }
 }
 
 function addBookToLibrary(tome) {
@@ -47,6 +51,11 @@ function addBookToLibrary(tome) {
 
 function removeBookFromLibrary() {
     currentLibrary.splice(this.value, 1);
+    displayBooks();
+}
+
+function toggleIsRead() {
+    currentLibrary[this.value].flipIsRead();
     displayBooks();
 }
 
@@ -77,13 +86,18 @@ function displayBooks() {                    // clear table then add all existin
         tr.appendChild(td);
 
         td = document.createElement("td");
+        let newButton = document.createElement("button");
         tdText = document.createTextNode(`${tome.isRead}`);
+        newButton.setAttribute("value", `${index}`);
+        newButton.setAttribute("style", "background-color: brown; color: antiquewhite; padding: 2px 8px;");
+        newButton.addEventListener("click", toggleIsRead);
+        newButton.appendChild(tdText);
         td.setAttribute("class", "aligned-center");
-        td.appendChild(tdText);
+        td.appendChild(newButton);
         tr.appendChild(td);
 
         td = document.createElement("td");
-        let newButton = document.createElement("button");
+        newButton = document.createElement("button");
         tdText = document.createTextNode("X");
         newButton.setAttribute("value", `${index}`);
         newButton.setAttribute("style", "background-color: red; color: antiquewhite; padding: 2px;");
