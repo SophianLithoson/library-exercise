@@ -45,34 +45,55 @@ function addBookToLibrary(tome) {
     currentLibrary.push(tome);
 }
 
+function removeBookFromLibrary() {
+    console.log(`${this.value}`);
+}
+
 function displayBooks() {                    // clear table then add all existing books to it
     while (tableBody.firstChild) {
         tableBody.removeChild(tableBody.firstChild);
     }
     
+    let index = 0;
+
     currentLibrary.forEach((tome) => {
         const tr = document.createElement("tr");
-        let td = document.createElement("td")
-        
-        let tableData = document.createTextNode(`${tome.title}`);
-        td.appendChild(tableData);
+
+        let td = document.createElement("td");        
+        let tdText = document.createTextNode(`${tome.title}`);
+        td.appendChild(tdText);
         tr.appendChild(td);
+
         td = document.createElement("td");
-        tableData = document.createTextNode(`${tome.author}`);
-        td.appendChild(tableData);
+        tdText = document.createTextNode(`${tome.author}`);
+        td.appendChild(tdText);
         tr.appendChild(td);
+
         td = document.createElement("td");
-        tableData = document.createTextNode(`${tome.numPages}`);
+        tdText = document.createTextNode(`${tome.numPages}`);
         td.setAttribute("class", "aligned-right");
-        td.appendChild(tableData);
+        td.appendChild(tdText);
         tr.appendChild(td);
+
         td = document.createElement("td");
-        tableData = document.createTextNode(`${tome.isRead}`);
+        tdText = document.createTextNode(`${tome.isRead}`);
         td.setAttribute("class", "aligned-center");
-        td.appendChild(tableData);
+        td.appendChild(tdText);
+        tr.appendChild(td);
+
+        td = document.createElement("td");
+        let newButton = document.createElement("button");
+        tdText = document.createTextNode("X");
+        newButton.setAttribute("value", `${index}`);
+        newButton.setAttribute("style", "background-color: red; color: antiquewhite; padding: 2px;");
+        newButton.addEventListener("click", removeBookFromLibrary);
+        newButton.appendChild(tdText);
+        td.setAttribute("class", "aligned-center");
+        td.appendChild(newButton);
         tr.appendChild(td);
 
         tableBody.append(tr);
+        index++;
     });
 }
 
