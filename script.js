@@ -30,17 +30,19 @@ dialogConfirmBtn.addEventListener("click", (event) => {
 
 // functions
 
-function Book(title, author, numPages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.isRead = isRead;
+class Book {    
+    constructor(title, author, numPages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.numPages = numPages;
+        this.isRead = isRead;
+    }
 
-    this.info = function () {
+    info() {
         return `${title} by ${author}, ${numPages} pages, ${(isRead === "Yes") ? "has been read" : "not read yet"}`;
     }
 
-    this.flipIsRead = function () {
+    flipIsRead() {
         this.isRead = (this.isRead === "Yes") ? "No" : "Yes";
     }
 }
