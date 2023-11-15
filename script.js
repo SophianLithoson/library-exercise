@@ -3,6 +3,7 @@ const currentLibrary = [];
 const buttonAddBook = document.getElementById("add-book");
 const addBookDialog = document.getElementById("add-book-dialog");
 const dialogConfirmBtn = document.getElementById("confirm-btn");
+const dialogCancelBtn = document.getElementById("cancel-btn");
 const dialogTitle = document.getElementById("title");
 const dialogAuthor = document.getElementById("author");
 const dialogPages = document.getElementById("num-pages");
@@ -20,23 +21,8 @@ buttonAddBook.addEventListener("click", () => {     // clear form and display di
 
 dialogConfirmBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    const formIsValid = true;
 
-    if (!dialogTitle.checkValidity()) {
-        dialogTitle.setCustomValidity("Must be 1-50 characters long");
-        formIsValid = false;
-    }
-    if (!dialogAuthor.checkValidity()) {
-        dialogAuthor.setCustomValidity("Must be 1-50 characters long");
-        formIsValid = false;
-    }
-    if (!dialogPages.checkValidity()) {
-        dialogPages.setCustomValidity("Must be between 1-1,000,000");
-        formIsValid = false;
-    }
-
-    if (formIsValid) {
-        dialogPages.setCustomValidity("");
+    if (dialogTitle.checkValidity() && dialogAuthor.checkValidity() && dialogPages.checkValidity()) {
         const newBook = new Book(dialogTitle.value, dialogAuthor.value, dialogPages.value, dialogIsRead.value);
         addBookToLibrary(newBook);
         displayBooks();
@@ -44,6 +30,16 @@ dialogConfirmBtn.addEventListener("click", (event) => {
     }
 })
 
+dialogCancelBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    dialogTitle.value = "";
+    dialogAuthor.value = "";
+    dialogPages.value = "";
+    dialogIsRead.value = "No";
+
+    addBookDialog.close();
+})
 
 // functions
 
