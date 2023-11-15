@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <script src="./script.js" defer></script>
     <title>Document</title>
 </head>
+
 <body>
     <div class="hero-text">
         <h2>Welcome to the Library</h2>
@@ -32,19 +34,19 @@
             <p>
                 <label>
                     Title:
-                    <input type="text" id="title"/>
+                    <input type="text" id="title" minlength="1" maxlength="50" required />
                 </label>
             </p>
             <p>
                 <label>
                     Author:
-                    <input type="text" id="author"/>
+                    <input type="text" id="author" minlength="1" maxlength="50" required />
                 </label>
             </p>
             <p>
                 <label>
                     Pages:
-                    <input type="number" id="num-pages"/>
+                    <input type="number" id="num-pages" min="1" max="1000000" required />
                 </label>
             </p>
             <p>
@@ -64,4 +66,5 @@
     </dialog>
     <button id="add-book">Add Book</button>
 </body>
+
 </html>

@@ -20,17 +20,34 @@ buttonAddBook.addEventListener("click", () => {     // clear form and display di
 
 dialogConfirmBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    
-    const newBook = new Book(dialogTitle.value, dialogAuthor.value, dialogPages.value, dialogIsRead.value);
-    addBookToLibrary(newBook);
-    displayBooks();
-    addBookDialog.close(); 
+    const formIsValid = true;
+
+    if (!dialogTitle.checkValidity()) {
+        dialogTitle.setCustomValidity("Must be 1-50 characters long");
+        formIsValid = false;
+    }
+    if (!dialogAuthor.checkValidity()) {
+        dialogAuthor.setCustomValidity("Must be 1-50 characters long");
+        formIsValid = false;
+    }
+    if (!dialogPages.checkValidity()) {
+        dialogPages.setCustomValidity("Must be between 1-1,000,000");
+        formIsValid = false;
+    }
+
+    if (formIsValid) {
+        dialogPages.setCustomValidity("");
+        const newBook = new Book(dialogTitle.value, dialogAuthor.value, dialogPages.value, dialogIsRead.value);
+        addBookToLibrary(newBook);
+        displayBooks();
+        addBookDialog.close();
+    }
 })
 
 
 // functions
 
-class Book {    
+class Book {
     constructor(title, author, numPages, isRead) {
         this.title = title;
         this.author = author;
@@ -65,13 +82,13 @@ function displayBooks() {                    // clear table then add all existin
     while (tableBody.firstChild) {
         tableBody.removeChild(tableBody.firstChild);
     }
-    
+
     let index = 0;
 
     currentLibrary.forEach((tome) => {
         const tr = document.createElement("tr");
 
-        let td = document.createElement("td");        
+        let td = document.createElement("td");
         let tdText = document.createTextNode(`${tome.title}`);
         td.appendChild(tdText);
         tr.appendChild(td);

@@ -5,7 +5,7 @@
 
 body {
     background-color: brown;
-    color:antiquewhite;
+    color: antiquewhite;
     display: flex;
     flex-direction: column;
 }
@@ -27,6 +27,14 @@ table {
     padding: 10px;
     border: none;
     box-shadow: 4px 4px 4px #4e1313;
+}
+
+input:invalid {
+    box-shadow: 0 0 3px 1px red;
+}
+
+input:focus:invalid {
+    box-shadow: none;
 }
 
 .hero-text {
